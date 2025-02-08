@@ -28,14 +28,14 @@ variables:
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: $(azureSubscription)
+    azureSubscription: $(Curso_DevOps)
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
       set -e  # Termina el script si cualquier comando falla
 
       # Asegurar que se usa la suscripción correcta
-      # az account set --subscription "47cf5b83-0b7f-4ff7-b5fb-6e338131eef2"
+      # az account set --subscription "877bb748-0767-4070-aa75-4ef9d992088c"
 
       # Crear un grupo de recursos
       echo "Creando grupo de recursos..."
