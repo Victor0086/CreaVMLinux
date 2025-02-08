@@ -6,7 +6,7 @@ pool:
 
 variables:
   azureSubscription: 'Curso_DevOps'  # Debe coincidir con la Service Connection en Azure DevOps
-  location: 'eastus2'
+  location: 'eastus'
   resourceGroupName: 'DemoDevOps'  # Se adapta al grupo de recursos real
   virtualNetworkName: 'VNet-DemoDevOps'
   subnetName: 'Subnet-DemoDevOps'
