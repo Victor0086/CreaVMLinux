@@ -7,17 +7,17 @@ pool:
 variables:
   azureSubscription: 'Curso_DevOps'  # Debe coincidir con la Service Connection en Azure DevOps
   location: 'eastus2'
-  resourceGroupName: 'Curso_DevOps'
-  virtualNetworkName: 'VNet-Curso_DevOps'
-  subnetName: 'Subnet-Curso_DevOps'
+  resourceGroupName: 'DemoDevOps'  # Se adapta al grupo de recursos real
+  virtualNetworkName: 'VNet-DemoDevOps'
+  subnetName: 'Subnet-DemoDevOps'
   addressPrefix: '10.0.0.0/16'
   subnetPrefix: '10.0.1.0/24'
-  securityGroupName: 'NSG-Curso_DevOps'
-  publicIpName: 'PublicIP-Curso_DevOps'
-  vmName: 'VM-Curso_DevOps'
+  securityGroupName: 'NSG-DemoDevOps'
+  publicIpName: 'PublicIP-DemoDevOps'
+  vmName: 'VM-DemoDevOps'
   vmSize: 'Standard_B2s'
   adminUsername: 'azureuser'
-  adminPassword: 'Password1234'
+  adminPassword: 'azureuser1'
 
   # Variables de la imagen
   imagePublisher: 'Canonical'
@@ -28,7 +28,7 @@ variables:
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'Curso_DevOps'  # Corrección aquí
+    azureSubscription: 'Curso_DevOps'  # Conexión de servicio correcta
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
@@ -60,5 +60,6 @@ steps:
       echo "Creando máquina virtual..."
       az vm create --resource-group $(resourceGroupName) --name $(vmName) --image $(imagePublisher):$(imageOffer):$(imageSku):$(imageVersion) --size $(vmSize) --admin-username $(adminUsername) --admin-password $(adminPassword) --vnet-name $(virtualNetworkName) --subnet $(subnetName) --nsg $(securityGroupName) --public-ip-address $(publicIpName)
       echo "Máquina virtual creada."
+
 
 
